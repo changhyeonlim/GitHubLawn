@@ -25,9 +25,8 @@ def run_train(data_path: str):
         mlflow.set_tag("developer", "samlim")
         mlflow.log_param("train_data_path", os.path.join(data_path, "train.pkl"))
         mlflow.log_param("valid-data-path", os.path.join(data_path, "val.pkl"))
-        md = 10
-        mlflow.log_param("max_depth", md)
-        rf = RandomForestRegressor(max_depth=md, random_state=0)
+
+        rf = RandomForestRegressor(max_depth=10, random_state=0)
         rf.fit(X_train, y_train)
         y_pred = rf.predict(X_val)
 
