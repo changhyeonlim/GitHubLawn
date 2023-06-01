@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("random-forest-hyperopt")
+mlflow.set_experiment("random-forest-hyperopt-v4")
 
 
 def load_pickle(filename):
@@ -42,12 +42,16 @@ def run_optimization(data_path: str, num_trials: int):
             'random_state': 42,
             'n_jobs': -1
         }
-
-        rf = RandomForestRegressor(**params)
-        rf.fit(X_train, y_train)
-        y_pred = rf.predict(X_val)
-        rmse = mean_squared_error(y_val, y_pred, squared=False)
-
+        with mlflow.start_run():
+            mlflow.set_tag("developer", "samlim")
+            # mlflow.log_param("train_data_path", os.path.join(data_path, "train.pkl"))
+            # mlflow.log_param("valid-data-path", os.path.join(data_path, "val.pkl"))
+            mlflow.log_params(params)
+            rf = RandomForestRegressor(**params)
+            rf.fit(X_train, y_train)
+            y_pred = rf.predict(X_val)
+            rmse = mean_squared_error(y_val, y_pred, squared=False)
+            mlflow.log_metric("rmse", rmse)
         return rmse
 
     sampler = TPESampler(seed=42)
