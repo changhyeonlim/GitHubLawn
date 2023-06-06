@@ -1,0 +1,18 @@
+
+[34m[1mwandb[39m[22m:   4 of 4 files downloaded.
+Traceback (most recent call last):
+  File "D:\Code\GitHubLawn\MLOpsZoomcamp\hw2_wnb\train.py", line 65, in <module>
+    run_train()
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "D:\Code\GitHubLawn\MLOpsZoomcamp\hw2_wnb\train.py", line 59, in run_train
+    artifact = wandb.Artifact('Regressor Model', type = 'model')
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_artifacts.py", line 169, in __init__
+    raise ValueError(
+ValueError: Artifact name may only contain alphanumeric characters, dashes, underscores, and dots. Invalid name: "Regressor Model"

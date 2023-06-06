@@ -1,0 +1,18 @@
+
+[34m[1mwandb[39m[22m:   4 of 4 files downloaded.
+Traceback (most recent call last):
+  File "D:\Code\GitHubLawn\MLOpsZoomcamp\hw2_wnb\train.py", line 65, in <module>
+    run_train()
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\click\core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "D:\Code\GitHubLawn\MLOpsZoomcamp\hw2_wnb\train.py", line 60, in run_train
+    artifact.add_dir("regressor.pkl")
+  File "C:\Users\Chang Hyeon Lim\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_artifacts.py", line 440, in add_dir
+    raise ValueError("Path is not a directory: %s" % local_path)
+ValueError: Path is not a directory: regressor.pkl

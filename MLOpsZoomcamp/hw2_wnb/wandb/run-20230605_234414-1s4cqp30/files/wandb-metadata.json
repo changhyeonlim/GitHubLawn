@@ -1,0 +1,57 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.10.11",
+    "heartbeatAt": "2023-06-06T03:44:14.775926",
+    "startedAt": "2023-06-06T03:44:14.272088",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--wandb_project",
+        "hw2-wandb",
+        "--wandb_entity",
+        "changhyeonlim",
+        "--data_artifact",
+        "changhyeonlim/hw2-wandb/NYC-Taxi:v0"
+    ],
+    "state": "running",
+    "program": "D:\\Code\\GitHubLawn\\MLOpsZoomcamp\\hw2_wnb\\train.py",
+    "codePath": "MLOpsZoomcamp\\hw2_wnb\\train.py",
+    "git": {
+        "remote": "https://github.com/changhyeonlim/GitHubLawn.git",
+        "commit": "4cf124191f4ef2b83d9378fdb22720a7c249246f"
+    },
+    "email": "changhyeonlim@gmail.com",
+    "root": "D:/Code/GitHubLawn",
+    "host": "DESKTOP-B0DA0VE",
+    "username": "Chang Hyeon Lim",
+    "executable": "C:\\Users\\Chang Hyeon Lim\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 3201.0,
+        "min": 0.0,
+        "max": 3201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3201.0,
+            "min": 0.0,
+            "max": 3201.0
+        }
+    ],
+    "disk": {
+        "total": 953.8525352478027,
+        "used": 29.782020568847656
+    },
+    "gpu": "NVIDIA GeForce GTX 970",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 970",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 15.940975189208984
+    }
+}
