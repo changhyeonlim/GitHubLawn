@@ -123,15 +123,15 @@ def train_best_model(
         
         """
         create_markdown_artifact(key = "duration-model-report", markdown = markdown_rsme_report)
-        
+
         
     return None
 
 
 @flow
 def main_flow(
-    train_path: str = "./data/green_tripdata_2023-01.parquet",
-    val_path: str = "./data/green_tripdata_2023-02.parquet",
+    train_path: str = "./data/green_tripdata_2023-02.parquet",
+    val_path: str = "./data/green_tripdata_2023-03.parquet",
 ) -> None:
     """The main training pipeline"""
 
