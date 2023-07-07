@@ -28,7 +28,7 @@ create table dummy_metrics(
 	prediction_drift float,
 	num_drifted_columns integer,
 	share_missing_values float,
-	pearson_value float
+	pearson_value float,
 	quantile_value float
 )
 """
