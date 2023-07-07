@@ -14,7 +14,8 @@ from prefect import task, flow
 from evidently.report import Report
 from evidently import ColumnMapping
 from evidently.metrics import ColumnDriftMetric, DatasetDriftMetric, DatasetMissingValuesMetric
-
+from evidently.metrics import ColumnQuantileMetric
+from evidently.metrics import DatasetCorrelationsMetric
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s]: %(message)s")
 
 SEND_TIMEOUT = 10
@@ -34,9 +35,9 @@ reference_data = pd.read_parquet('data/reference.parquet')
 with open('models/lin_reg.bin', 'rb') as f_in:
 	model = joblib.load(f_in)
 
-raw_data = pd.read_parquet('data/green_tripdata_2022-02.parquet')
+raw_data = pd.read_parquet('data/green_tripdata_2023-03.parquet')
 
-begin = datetime.datetime(2022, 2, 1, 0, 0)
+begin = datetime.datetime(2023, 3, 1, 0, 0)
 num_features = ['passenger_count', 'trip_distance', 'fare_amount', 'total_amount']
 cat_features = ['PULocationID', 'DOLocationID']
 column_mapping = ColumnMapping(
@@ -46,11 +47,14 @@ column_mapping = ColumnMapping(
     target=None
 )
 
-report = Report(metrics = [
+report = Report(metrics=[
     ColumnDriftMetric(column_name='prediction'),
     DatasetDriftMetric(),
-    DatasetMissingValuesMetric()
-])
+    DatasetMissingValuesMetric(),
+    DatasetCorrelationsMetric(),
+    ColumnQuantileMetric(column_name='fare_amount', quantile=0.5),
+]
+)
 
 @task
 def prep_db():
