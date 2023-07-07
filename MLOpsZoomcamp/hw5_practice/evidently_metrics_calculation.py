@@ -27,7 +27,9 @@ create table dummy_metrics(
 	timestamp timestamp,
 	prediction_drift float,
 	num_drifted_columns integer,
-	share_missing_values float
+	share_missing_values float,
+	pearson_value float
+	quantile_value float
 )
 """
 
@@ -81,10 +83,12 @@ def calculate_metrics_postgresql(curr, i):
 	prediction_drift = result['metrics'][0]['result']['drift_score']
 	num_drifted_columns = result['metrics'][1]['result']['number_of_drifted_columns']
 	share_missing_values = result['metrics'][2]['result']['current']['share_of_missing_values']
+	pearson_value = result['metrics'][3]['result']['current']['stats']['pearson']['abs_max_correlation']
+	quantile_value = result['metrics'][4]['result']['current']['value']
 
 	curr.execute(
-		"insert into dummy_metrics(timestamp, prediction_drift, num_drifted_columns, share_missing_values) values (%s, %s, %s, %s)",
-		(begin + datetime.timedelta(i), prediction_drift, num_drifted_columns, share_missing_values)
+		"insert into dummy_metrics(timestamp, prediction_drift, num_drifted_columns, share_missing_values, pearson_value, quantile_value) values (%s, %s, %s, %s, %s, %s)",
+		(begin + datetime.timedelta(i), prediction_drift, num_drifted_columns, share_missing_values, pearson_value, quantile_value)
 	)
 
 @flow
