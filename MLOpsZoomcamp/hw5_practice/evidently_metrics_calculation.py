@@ -61,7 +61,7 @@ def prep_db():
 		with psycopg.connect("host=localhost port=5432 dbname=test user=postgres password=example") as conn:
 			conn.execute(create_table_statement)
 
-@task
+@task(retries=2, retry_delay_seconds=5, name = "calculate metrics")
 def calculate_metrics_postgresql(curr, i):
 	current_data = raw_data[(raw_data.lpep_pickup_datetime >= (begin + datetime.timedelta(i))) &
 		(raw_data.lpep_pickup_datetime < (begin + datetime.timedelta(i + 1)))]
